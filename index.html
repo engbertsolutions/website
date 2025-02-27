@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World | Engbert Solutions</title>
+    <title>Liefer.One | Der smarte KI-Chat-Assistent für Restaurants</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -18,37 +19,346 @@
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: #fff;
+            overflow-x: hidden;
         }
         
         .container {
-            text-align: center;
-            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px;
         }
         
         h1 {
             font-size: 3.5rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
-        p {
+        .subheadline {
             font-size: 1.25rem;
             font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto;
+            margin-bottom: 2.5rem;
             line-height: 1.6;
+            opacity: 0.9;
         }
         
         .highlight {
             color: #FFD700;
             font-weight: 600;
         }
+
+        .emoji {
+            font-style: normal;
+        }
+                /* Form */
+        .email-form {
+            display: flex;
+            margin-top: 2rem;
+            max-width: 650px; /* Increased width from 500px to 650px */
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            opacity: 0.75; /* Added opacity to indicate disabled state */
+        }
         
+        .email-input {
+            flex: 1;
+            padding: 1.2rem 1.8rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: not-allowed; /* Changed cursor to indicate disabled state */
+            pointer-events: none; /* Prevents interaction with the input */
+        }
+        
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .email-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        .submit-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            padding: 0 1.8rem;
+            background: linear-gradient(90deg, #FFD700 0%, #FFC107 100%);
+            border: none;
+            border-radius: 25px;
+            color: #764ba2;
+            font-weight: 600;
+            cursor: not-allowed; /* Changed cursor to indicate disabled state */
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            pointer-events: none; /* Prevents interaction with the button */
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #FFC107 0%, #FFD700 100%);
+            transform: none; /* Removed hover effect since it's disabled */
+            box-shadow: none; /* Removed hover effect since it's disabled */
+        }
+        
+        .submit-btn:after {
+            content: '(Demnächst verfügbar)';
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: none;
+            letter-spacing: normal;
+        }
+        
+        /* Responsive adjustments for the form */
+        @media (max-width: 768px) {
+            .email-form {
+                flex-direction: column;
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%; /* Make it full width on mobile */
+            }
+        
+            .email-input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+        
+            .submit-btn {
+                position: relative;
+                right: auto;
+                top: auto;
+                bottom: auto;
+                width: 100%;
+                border-radius: 30px;
+                padding: 1rem;
+            }
+            
+            .submit-btn:after {
+                bottom: -25px;
+            }
+        }
+        
+        /* Features Section */
+        .features {
+            background: rgba(91, 87, 154, 0.4);
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-desc {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        .countdown-item {
+            margin: 0 1rem;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            background: rgba(67, 56, 126, 0.9);
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #FFD700;
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #fff;
+        }
+
+        /* Chat Animation */
+        .chat-animation {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            width: 350px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            overflow: hidden;
+            z-index: 5;
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .chat-animation {
+                display: block;
+            }
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-title {
+            margin-left: 1rem;
+            font-weight: 600;
+        }
+
+        .chat-body {
+            height: calc(100% - 60px);
+            overflow-y: auto;
+            padding: 1rem 0;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 15px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .user-message {
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: auto;
+            border-top-right-radius: 0;
+        }
+
+        .bot-message {
+            background: rgba(255, 215, 0, 0.3);
+            margin-right: auto;
+            border-top-left-radius: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Elements */
         .circle {
             position: absolute;
             border-radius: 50%;
@@ -57,26 +367,60 @@
         }
         
         #circle1 {
-            width: 100px;
-            height: 100px;
+            width: 300px;
+            height: 300px;
             top: 10%;
-            left: 10%;
+            left: 5%;
         }
         
         #circle2 {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             bottom: 20%;
             right: 15%;
         }
         
         #circle3 {
-            width: 70px;
-            height: 70px;
+            width: 150px;
+            height: 150px;
             bottom: 30%;
             left: 20%;
         }
-        
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subheadline {
+                font-size: 1.1rem;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .email-input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+                border-right: 1px solid rgba(255, 255, 255, 0.731);
+            }
+
+            .submit-btn {
+                border-radius: 30px;
+                padding: 1rem;
+            }
+
+            .countdown {
+                flex-wrap: wrap;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -104,11 +448,113 @@
     <div class="circle" id="circle2"></div>
     <div class="circle" id="circle3"></div>
     
-    <div class="container">
-        <h1>Hello <span class="highlight">World</span>!</h1>
-        <p>Welcome to Engbert Solutions, where innovation meets creativity. We're excited to showcase our beautiful web presence and share our journey with you.</p>
-        <a href="#" class="btn">Get Started</a>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1><span class="emoji">🍔🥗</span> Bestellen leicht gemacht – mit <span class="highlight">Liefer.One</span>!</h1>
+                <p class="subheadline">Dein smarter KI-Assistent für Restaurants & Lieferdienste. Automatisierte Bestellannahme, sofortige Antworten – und mehr Zeit für das, was zählt.</p>
+                
+                <form class="email-form">
+                    <input type="email" class="email-input" placeholder="Deine E-Mail-Adresse" required>
+                    <button type="submit" class="submit-btn">Sei einer der Ersten!</button>
+                </form>
+            </div>
+
+            <!-- Chat Animation Box -->
+            <div class="chat-animation">
+                <div class="chat-header">
+                    <i class="fas fa-robot highlight"></i>
+                    <span class="chat-title">Liefer.One Assistent</span>
+                </div>
+                <div class="chat-body" id="chatBody">
+                    <!-- Chat messages will be added dynamically via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-heading">Warum <span class="highlight">Liefer.One</span>?</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-phone-slash feature-icon"></i>
+                    <h3 class="feature-title">Nie wieder überfüllte Telefonleitungen!</h3>
+                    <p class="feature-desc">Schluss mit dem Telefon-Chaos! Unser KI-Assistent nimmt alle Bestellungen perfekt entgegen – auch bei Hochbetrieb.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-comments feature-icon"></i>
+                    <h3 class="feature-title">Sofortige Antworten</h3>
+                    <p class="feature-desc">Kunden haben Fragen? Liefer.One antwortet blitzschnell und präzise – ganz automatisch und rund um die Uhr.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-edit feature-icon"></i>
+                    <h3 class="feature-title">Bestelländerungen? Kein Problem!</h3>
+                    <p class="feature-desc">Extra Käse? Ohne Zwiebeln? Liefer.One passt jede Bestellung flexibel an – ohne dass du eingreifen musst.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-utensils feature-icon"></i>
+                    <h3 class="feature-title">Mehr Zeit fürs Wesentliche</h3>
+                    <p class="feature-desc">Während der KI-Assistent die Bestellungen managt, kannst du dich voll und ganz aufs Kochen und den Service konzentrieren.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <h2 class="section-heading">Coming <span class="highlight">Soon</span>!</h2>
+            <p class="subheadline">Wir arbeiten gerade an der Zukunft des Liefer-Services! <br>Melde dich an & erfahre als Erster, wann es losgeht!</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">42</div>
+                    <div class="countdown-label">Tage</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">12</div>
+                    <div class="countdown-label">Stunden</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">36</div>
+                    <div class="countdown-label">Minuten</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">54</div>
+                    <div class="countdown-label">Sekunden</div>
+                </div>
+            </div>
+            
+            <form class="email-form" style="margin: 0 auto;">
+                <input type="email" class="email-input" placeholder="Deine E-Mail-Adresse" required>
+                <button type="submit" class="submit-btn">Benachrichtige mich</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Bleib dran!</h3>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>📩 Kontakt: info@liefer.one</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Datenschutz</a>
+                <a href="#" class="footer-link">Impressum</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Simple animation for the circles
@@ -122,6 +568,78 @@
                     circle.style.transform = `translate(${x}px, ${y}px)`;
                 }, 2000);
             });
+            
+            // Chat animation
+            const chatBody = document.getElementById('chatBody');
+            const messages = [
+                { type: 'bot', text: '👋 Hey! Willkommen bei <strong>Pizza Napoli</strong> – wo jede Pizza mit Liebe gebacken wird. Was darf es heute sein? 🍕' },
+                { type: 'user', text: 'Hi! Ich hätte gerne eine Pizza.' },
+                { type: 'bot', text: 'Gute Entscheidung! Hast du Lust auf eine unserer <strong>Klassiker</strong> 🍕 oder möchtest du etwas <strong>Besonderes</strong> probieren? 🤩' },
+                { type: 'user', text: 'Welche Klassiker habt ihr denn?' },
+                { type: 'bot', text: 'Hier sind unsere Bestseller:<br>✅ <strong>Margherita</strong> – Klassisch & perfekt<br>✅ <strong>Salami</strong> – Herzhaft & würzig<br>✅ <strong>Quattro Formaggi</strong> – Käseliebhaber aufgepasst!<br><br>Lass mich wissen, auf was du heute Lust hast! 🤤' },
+                { type: 'user', text: 'Ich nehme eine Quattro Formaggi!' },
+                { type: 'bot', text: 'Exzellente Wahl! 🧀🧀🧀🧀 Willst du noch ein <strong>Topping</strong> dazu? Vielleicht extra Mozzarella oder scharfe Peperoni? 🌶️' },
+                { type: 'user', text: 'Hmm… Extra Mozzarella klingt gut!' },
+                { type: 'bot', text: 'Gute Wahl! 😍 Deine <strong>Quattro Formaggi mit extra Mozzarella</strong> ist fast bereit. Möchtest du noch eine Beilage oder ein Getränk dazu? 🥤' },
+                { type: 'user', text: 'Ja, eine Cola bitte.' },
+                { type: 'bot', text: 'Top! 🥤 Deine Bestellung: <strong>Quattro Formaggi mit extra Mozzarella + Cola</strong>. Passt das so? ✅' },
+                { type: 'user', text: 'Ja, perfekt!' },
+                { type: 'bot', text: 'Super! Deine Bestellung wird frisch zubereitet und ist in <strong>30-40 Minuten</strong> bei dir. 🚀 <br><br>💳 Wie möchtest du bezahlen? Aktuell bieten wir <strong>PayPal</strong> als sichere Zahlungsmethode an.' },
+                { type: 'user', text: 'PayPal klingt gut!' },
+                { type: 'bot', text: 'Perfekt! Ich leite dich direkt zur <strong>PayPal</strong>-Zahlung weiter. Bitte bestätige deine Zahlung, damit wir die Bestellung abschließen können. 🔗 <a href="https://www.paypal.com/pay" target="_blank">Hier bezahlen</a>' },
+                { type: 'user', text: 'Okay, bezahlt!' },
+                { type: 'bot', text: 'Danke für deine Zahlung! ✅ Deine Bestellung ist bestätigt und auf dem Weg zu dir. 🍕🚀 <br><br>Viel Spaß beim Genießen und danke, dass du bei <strong>Pizza Napoli</strong> bestellt hast! 😍' }
+            ];
+            
+            let messageIndex = 0;
+            
+                function showNextMessage() {
+                if (messageIndex < messages.length) {
+                    const message = messages[messageIndex];
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `chat-message ${message.type}-message`;
+                    messageDiv.innerHTML = message.text;  // Ändere textContent zu innerHTML
+                    chatBody.appendChild(messageDiv);
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                    messageIndex++;
+                    
+                    // Speed up or slow down based on message type
+                    const delay = message.type === 'bot' ? 2000 : 1500;
+                    setTimeout(showNextMessage, delay);
+                } else {
+                    // Reset and start over after a pause
+                    setTimeout(() => {
+                        chatBody.innerHTML = '';
+                        messageIndex = 0;
+                        showNextMessage();
+                    }, 4000);
+                }
+            }
+            
+            // Start the chat animation
+            setTimeout(showNextMessage, 1000);
+            
+            // Countdown timer
+            const launchDate = new Date();
+            launchDate.setDate(launchDate.getDate() + 42); // Launch in 42 days
+            
+            function updateCountdown() {
+                const now = new Date();
+                const distance = launchDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
         });
     </script>
 </body>
