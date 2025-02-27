@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World | Engbert Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #FFD700;
+            font-weight: 600;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+        }
+        
+        #circle1 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+        }
+        
+        #circle2 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            right: 15%;
+        }
+        
+        #circle3 {
+            width: 70px;
+            height: 70px;
+            bottom: 30%;
+            left: 20%;
+        }
+        
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #fff;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #fff;
+            color: #764ba2;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="circle" id="circle1"></div>
+    <div class="circle" id="circle2"></div>
+    <div class="circle" id="circle3"></div>
+    
+    <div class="container">
+        <h1>Hello <span class="highlight">World</span>!</h1>
+        <p>Welcome to Engbert Solutions, where innovation meets creativity. We're excited to showcase our beautiful web presence and share our journey with you.</p>
+        <a href="#" class="btn">Get Started</a>
+    </div>
+
+    <script>
+        // Simple animation for the circles
+        document.addEventListener('DOMContentLoaded', function() {
+            const circles = document.querySelectorAll('.circle');
+            
+            circles.forEach(circle => {
+                setInterval(() => {
+                    const x = Math.random() * 20 - 10;
+                    const y = Math.random() * 20 - 10;
+                    circle.style.transform = `translate(${x}px, ${y}px)`;
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
