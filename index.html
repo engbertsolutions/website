@@ -331,8 +331,28 @@
             text-align: center;
         }
 
+        /* Replace the chat preview with a mobile-friendly chat display */
+        .chat-animation-mobile {
+            display: none;
+            max-width: 100%;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            overflow: hidden;
+            margin: 2rem auto 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
         @media (max-width: 1023px) {
             .chat-preview-mobile {
+                display: none;
+            }
+            
+            .chat-animation-mobile {
                 display: block;
             }
             
@@ -486,9 +506,15 @@
                     <button type="submit" class="submit-btn">Sei einer der Ersten!</button>
                 </form>
                 
-                <!-- Mobile chat preview -->
-                <div class="chat-preview-mobile">
-                    <p><i class="fas fa-robot highlight" style="font-size: 1.2rem;"></i> Sieh dir auf größeren Bildschirmen unseren Chat-Assistenten in Aktion an!</p>
+                <!-- Mobile chat animation replaces the preview text -->
+                <div class="chat-animation-mobile">
+                    <div class="chat-header">
+                        <i class="fas fa-robot highlight"></i>
+                        <span class="chat-title">Liefer.One Assistent</span>
+                    </div>
+                    <div class="chat-body" id="chatBodyMobile">
+                        <!-- Chat messages will be added dynamically via JavaScript -->
+                    </div>
                 </div>
             </div>
 
@@ -602,6 +628,7 @@
             
             // Chat animation
             const chatBody = document.getElementById('chatBody');
+            const chatBodyMobile = document.getElementById('chatBodyMobile');
             const messages = [
                 { type: 'bot', text: '👋 Hey! Willkommen bei <strong>Pizza Napoli</strong> – wo jede Pizza mit Liebe gebacken wird. Was darf es heute sein? 🍕' },
                 { type: 'user', text: 'Hi! Ich hätte gerne eine Pizza.' },
@@ -623,32 +650,48 @@
             ];
             
             let messageIndex = 0;
-            
-                function showNextMessage() {
-                if (messageIndex < messages.length) {
-                    const message = messages[messageIndex];
+            let messageIndexMobile = 0;
+
+            function showNextMessage(container, index, updateIndex) {
+                if (index < messages.length) {
+                    const message = messages[index];
                     const messageDiv = document.createElement('div');
                     messageDiv.className = `chat-message ${message.type}-message`;
-                    messageDiv.innerHTML = message.text;  // Ändere textContent zu innerHTML
-                    chatBody.appendChild(messageDiv);
-                    chatBody.scrollTop = chatBody.scrollHeight;
-                    messageIndex++;
+                    messageDiv.innerHTML = message.text;
+                    container.appendChild(messageDiv);
+                    container.scrollTop = container.scrollHeight;
                     
                     // Speed up or slow down based on message type
                     const delay = message.type === 'bot' ? 2000 : 1500;
-                    setTimeout(showNextMessage, delay);
+                    setTimeout(() => showNextMessage(container, index + 1, updateIndex), delay);
+                    
+                    if (updateIndex) {
+                        messageIndex = index + 1;
+                    } else {
+                        messageIndexMobile = index + 1;
+                    }
                 } else {
                     // Reset and start over after a pause
                     setTimeout(() => {
-                        chatBody.innerHTML = '';
-                        messageIndex = 0;
-                        showNextMessage();
+                        container.innerHTML = '';
+                        if (updateIndex) {
+                            messageIndex = 0;
+                            showNextMessage(container, 0, true);
+                        } else {
+                            messageIndexMobile = 0;
+                            showNextMessage(container, 0, false);
+                        }
                     }, 4000);
                 }
             }
-            
-            // Start the chat animation
-            setTimeout(showNextMessage, 1000);
+
+            // Start both chat animations with a delay
+            if (chatBody) {
+                setTimeout(() => showNextMessage(chatBody, messageIndex, true), 1000);
+            }
+            if (chatBodyMobile) {
+                setTimeout(() => showNextMessage(chatBodyMobile, messageIndexMobile, false), 1000);
+            }
             
             // Countdown timer
             const launchDate = new Date();
