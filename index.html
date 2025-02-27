@@ -302,16 +302,42 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Add for better cross-browser support */
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 1rem;
             overflow: hidden;
             z-index: 5;
             display: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         @media (min-width: 1024px) {
             .chat-animation {
                 display: block;
+            }
+            
+            /* Ensure proper positioning on all browsers */
+            .hero-content {
+                position: relative;
+                z-index: 10;
+                max-width: 50%;
+            }
+        }
+
+        /* Mobile chat preview for smaller screens */
+        .chat-preview-mobile {
+            display: none;
+            margin: 2rem auto 0;
+            text-align: center;
+        }
+
+        @media (max-width: 1023px) {
+            .chat-preview-mobile {
+                display: block;
+            }
+            
+            .hero-content {
+                max-width: 100%;
             }
         }
 
@@ -459,6 +485,11 @@
                     <input type="email" class="email-input" placeholder="Deine E-Mail-Adresse" required>
                     <button type="submit" class="submit-btn">Sei einer der Ersten!</button>
                 </form>
+                
+                <!-- Mobile chat preview -->
+                <div class="chat-preview-mobile">
+                    <p><i class="fas fa-robot highlight" style="font-size: 1.2rem;"></i> Sieh dir auf größeren Bildschirmen unseren Chat-Assistenten in Aktion an!</p>
+                </div>
             </div>
 
             <!-- Chat Animation Box -->
