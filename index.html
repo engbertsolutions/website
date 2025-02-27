@@ -41,11 +41,13 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            width: 100%; /* Ensure full width */
         }
 
         .hero-content {
             z-index: 10;
             max-width: 800px;
+            padding: 0 1rem; /* Add padding to prevent content from touching edges */
         }
         
         h1 {
@@ -72,7 +74,7 @@
         .emoji {
             font-style: normal;
         }
-                /* Form */
+        /* Form */
         .email-form {
             display: flex;
             margin-top: 2rem;
@@ -445,17 +447,20 @@
 
             .email-form {
                 flex-direction: column;
+                width: 100%; /* Ensure full width on mobile */
             }
 
             .email-input {
                 border-radius: 30px;
                 margin-bottom: 1rem;
                 border-right: 1px solid rgba(255, 255, 255, 0.731);
+                width: 100%; /* Ensure full width */
             }
 
             .submit-btn {
                 border-radius: 30px;
                 padding: 1rem;
+                width: 100%; /* Ensure full width */
             }
 
             .countdown {
@@ -465,7 +470,23 @@
             section {
                 padding: 4rem 0;
             }
+            
+            .container {
+                padding: 0 1.5rem; /* Increase padding on mobile */
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero-content {
+                padding: 0; /* Reset padding since container has padding */
+                width: 100%;
+            }
+            
+            body {
+                overflow-x: hidden; /* Prevent horizontal scrolling */
+            }
         }
+
 
         .btn {
             display: inline-block;
